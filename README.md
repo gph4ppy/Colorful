@@ -25,6 +25,7 @@ Colorful includes many functions, such as:
 ### Gallery
 **Greeting alert**
 Each information card changes every 6 seconds. There is a button at the end to prevent the window from being displayed anymore.
+
 ![Greeting alert](https://user-images.githubusercontent.com/41966757/105033760-d6a9b480-5a58-11eb-875e-63227e9766d0.gif)
 
 ##### --- Dark Mode Section ---
