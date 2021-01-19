@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ColorPalettes" representedClassName="ColorPalettes" syncable="YES">
+        <attribute name="hexes" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+    </entity>
+    <entity name="LovedColor" representedClassName="LovedColor" syncable="YES">
+        <attribute name="hex" optional="YES" attributeType="String"/>
+        <attribute name="hsb" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="rgb" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ColorPalettes" positionX="-54" positionY="18" width="128" height="44"/>
+        <element name="LovedColor" positionX="-63" positionY="-18" width="128" height="89"/>
+    </elements>
+</model>

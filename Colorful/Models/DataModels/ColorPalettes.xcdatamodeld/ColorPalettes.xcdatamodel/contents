@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ColorPalette" representedClassName="ColorPalette" syncable="YES">
+        <attribute name="hexcolor1" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor2" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor3" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor4" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor5" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor6" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor7" optional="YES" attributeType="String"/>
+        <attribute name="hexcolor8" optional="YES" attributeType="String"/>
+        <attribute name="paletteName" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ColorPalette" positionX="-63" positionY="-18" width="128" height="164"/>
+    </elements>
+</model>
