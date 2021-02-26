@@ -35,9 +35,3 @@ struct TabButton: View {
         .buttonStyle(PlainButtonStyle())
     }
 }
-
-struct TabButton_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}

@@ -21,19 +21,9 @@ extension View {
     }
 }
 
-// MARK: - Color Management
+// MARK: Color Management
+// MARK: - Color
 extension Color {
-    /// This function converts Color to the NSColor.
-    /// - Returns: NSColor
-    func nsColor() -> NSColor {
-        if #available(macOS 10.15, *) {
-            return NSColor(self)
-        }
-        
-        let components = self.components()
-        return NSColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
-    }
-    
     /// This function gets color elements.
     /// - Returns:
     ///   - r: red value
@@ -58,11 +48,26 @@ extension Color {
     }
 }
 
+extension Color {
+    /// This function converts Color to the NSColor.
+    /// - Returns: NSColor
+    func nsColor() -> NSColor {
+        if #available(macOS 10.15, *) {
+            return NSColor(self)
+        }
+        
+        let components = self.components()
+        return NSColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
+    }
+}
+
+// MARK: - NSColor
 extension NSColor {
     /// This function converts NSColor to a hexadecimal color string.
     /// - Returns: Hexadecimal Color String
     func toHexString() -> String? {
         var alpha = false
+        
         guard let components = cgColor.components, components.count >= 3 else {
             return nil
         }
@@ -95,7 +100,9 @@ extension NSColor {
         self.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
         return HSBColor(hue: h, saturation: s, brightness: b, alpha: a)
     }
-    
+}
+
+extension NSColor {
     public struct HSBColor {
         var hue: CGFloat
         var saturation: CGFloat
@@ -131,13 +138,11 @@ extension NSColor {
             r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
             g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
             b = CGFloat(rgb & 0x0000FF) / 255.0
-            
         } else if length == 8 {
             r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
             g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
             b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
             a = CGFloat(rgb & 0x000000FF) / 255.0
-            
         } else {
             return nil
         }

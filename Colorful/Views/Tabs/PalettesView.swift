@@ -117,7 +117,8 @@ struct PalettesView: View {
                                 delete(at: palettes.firstIndex(where: { $0.id == palette.id }) ?? 0)
                             }){
                                 Image(systemName: "minus.circle.fill")
-                            }.foregroundColor(Color(NSColor.systemRed))
+                            }
+                            .foregroundColor(Color(NSColor.systemRed))
                             .padding()
                             PalettesCardView(palette: paletteModel, id: UUID())
                         }
@@ -126,14 +127,8 @@ struct PalettesView: View {
                         for index in indexSet {
                             viewContext.delete(palettes[index])
                         }
-                        do {
-                            try viewContext.save()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
                     }
                 }
-                .id(UUID())
                 // Hide List Indicator
                 .onNSView(added: { nsview in
                     let root = nsview.subviews[0] as! NSScrollView
@@ -149,25 +144,23 @@ struct PalettesView: View {
     func savePalette(_ palette: PaletteModel) {
         let savedPalette = ColorPalettes(context: viewContext)
         savedPalette.hexes = palette.hexes
-        
-        do {
-            try viewContext.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        saveContext()
     }
     
     /// This function removes the selected palette.
     /// - Parameter index: A selected position, which is about to be removed.
     func delete(at index: Int) {
         viewContext.delete(palettes[index])
-        
         DispatchQueue.main.async {
-            do {
-                try viewContext.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            saveContext()
+        }
+    }
+    
+    func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

@@ -110,9 +110,3 @@ struct DiscordRolesView: View {
         }
     }
 }
-
-struct DiscordRolesView_Previews: PreviewProvider {
-    static var previews: some View {
-        DiscordRolesView()
-    }
-}

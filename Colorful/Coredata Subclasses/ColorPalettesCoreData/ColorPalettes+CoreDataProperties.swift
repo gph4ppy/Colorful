@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension ColorPalettes {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ColorPalettes> {
         return NSFetchRequest<ColorPalettes>(entityName: "ColorPalettes")

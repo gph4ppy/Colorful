@@ -124,7 +124,8 @@ struct Picker: View {
                             Button(action: { delete(at: colors.firstIndex(where: { $0.id == color.id }) ?? 0)
                             }){
                                 Image(systemName: "minus.circle.fill")
-                            }.foregroundColor(Color(NSColor.systemRed))
+                            }
+                            .foregroundColor(Color(NSColor.systemRed))
                             .padding()
                             CardView(color: colorModel, id: UUID())
                         }
@@ -133,14 +134,8 @@ struct Picker: View {
                         for index in indexSet {
                             viewContext.delete(colors[index])
                         }
-                        do {
-                            try viewContext.save()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
                     }
                 }
-                .id(UUID())
                 // Hide List Indicator
                 .onNSView(added: { nsview in
                     let root = nsview.subviews[0] as! NSScrollView
@@ -170,19 +165,16 @@ struct Picker: View {
     /// - Parameter index: A selected position, which is about to be removed.
     func delete(at index: Int) {
         viewContext.delete(colors[index])
-        
         DispatchQueue.main.async {
-            do {
-                try viewContext.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            saveContext()
         }
     }
-}
-
-struct Picker_Previews: PreviewProvider {
-    static var previews: some View {
-        Picker().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    
+    func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

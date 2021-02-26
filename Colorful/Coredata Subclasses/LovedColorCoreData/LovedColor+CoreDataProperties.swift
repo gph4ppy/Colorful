@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension LovedColor {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<LovedColor> {
         return NSFetchRequest<LovedColor>(entityName: "LovedColor")
@@ -22,5 +21,4 @@ extension LovedColor {
 }
 
 extension LovedColor : Identifiable {
-
 }
